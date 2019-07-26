@@ -1,13 +1,15 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import Headline from './index'
-import { findByIdTest } from '../../utils/test'
+import { findByIdTest, checkProps } from '../../utils/test'
 
 const setup = (props = {}) => {
   return shallow(<Headline {...props} />)
 }
 
 describe('Headline Component', () => {
+
+  //Checking props
   describe('Have props', () => {
     let container
     beforeEach(() => {
@@ -38,6 +40,27 @@ describe('Headline Component', () => {
     it('Should not render', () => {
       const component = findByIdTest(container, 'HeadlineComponent')
       expect(component.length).toBe(0)
+    })
+  })
+
+  //Checking prop types
+  describe('Checking Proptypes', () => {
+    it('Should not throw warning', () => {
+      const expectedProps = {
+        header: 'Test Header',
+        desc: 'Test Desc',
+        tempArray: [
+          {
+            first_name: 'Test First Name',
+            last_name: 'Test Last Name',
+            email: 'test@mail.com',
+            age: 23,
+            status: false
+          }
+        ]
+      }
+      const propsErr = checkProps(Headline, expectedProps)
+      expect(propsErr).toBeUndefined()
     })
   })
 })
