@@ -1,4 +1,12 @@
 import checkPropTypes from 'check-prop-types'
+import { createStore, applyMiddleware } from 'redux'
+import rootReducer from '../reducers'
+import { middlewares } from '../store'
+
+const testStore = initialState => {
+  const storeWithMiddleware = applyMiddleware(...middlewares)(createStore)
+  return storeWithMiddleware(rootReducer, initialState)
+}
 
 const findByIdTest = (component, id) => {
   return component.find(`[id-test='${id}']`)
@@ -14,4 +22,4 @@ const checkProps = (component, expectedProps) => {
   )
 }
 
-export { findByIdTest, checkProps }
+export { findByIdTest, checkProps, testStore }
