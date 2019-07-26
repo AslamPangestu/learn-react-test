@@ -6,6 +6,7 @@ const findByIdTest = (component, id) => {
 
 const checkProps = (component, expectedProps) => {
   return checkPropTypes(
+    /* eslint-disable react/forbid-foreign-prop-types */
     component.propTypes,
     expectedProps,
     'props',

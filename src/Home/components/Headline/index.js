@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-class Headline extends Component {
+class Headline extends PureComponent {
   // constructor(props) {
   //   super(props)
   // }

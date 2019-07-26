@@ -1,30 +1,13 @@
 import React from 'react'
-import Header from './components/Header/'
-import Headline from './components/Headline/'
-import './app.scss'
-
-const temp = [
-  {
-    first_name: 'Joe',
-    last_name: 'Doe',
-    email: 'joe@mail.com',
-    age: 24,
-    status: 1
-  }
-]
+import Home from './Home/screens/Home'
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 function App() {
   return (
-    <div className='App'>
-      <Header />
-      <section className='main'>
-        <Headline
-          header='Post'
-          desc='Click the button to render post'
-          tempArray={temp}
-        />
-      </section>
-    </div>
+    <Provider store={store}>
+      <Home />
+    </Provider>
   )
 }
 

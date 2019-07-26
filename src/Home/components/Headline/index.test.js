@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import Headline from './index'
-import { findByIdTest, checkProps } from '../../utils/test'
+import { findByIdTest, checkProps } from '../../../utils/test'
 
 const setup = (props = {}) => {
   return shallow(<Headline {...props} />)
