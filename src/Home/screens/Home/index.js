@@ -33,7 +33,7 @@ class Home extends Component {
       emitEvent: this.fetch
     }
     return (
-      <div className='App'>
+      <div className='App' id-test='homeComponent'>
         <Header />
         <section className='main'>
           <Headline

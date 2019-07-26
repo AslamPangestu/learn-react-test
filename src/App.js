@@ -5,7 +5,7 @@ import { store } from './store'
 
 function App() {
   return (
-    <Provider store={store}>
+    <Provider store={store} id-test='rootComponent'>
       <Home />
     </Provider>
   )
