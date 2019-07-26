@@ -17,17 +17,37 @@ const temp = [
   }
 ]
 
+const initialState = {
+  hideBtn: false
+}
+
 class Home extends Component {
-  // constructor(props) {
-  //   super(props)
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {
+      ...initialState
+    }
+  }
 
   fetch = () => {
     this.props.getPosts()
+    this.hideButton()
+  }
+
+  hideButton = () => {
+    const { hideBtn } = this.state
+    this.setState({
+      hideBtn: !hideBtn
+    })
+  }
+
+  returnValue = num => {
+    return num + 1
   }
 
   render() {
     const { posts } = this.props
+    const { hideBtn } = this.state
     const configButton = {
       buttonText: 'Get Posts',
       emitEvent: this.fetch
@@ -41,7 +61,8 @@ class Home extends Component {
             desc='Click the button to render post'
             tempArray={temp}
           />
-          <Button {...configButton} />
+          {!hideBtn && <Button {...configButton} />}
+          {/* {posts.length === 0 && <Button {...configButton} />} */}
           {posts.length > 0 && (
             <div>
               {posts.map((item, index) => {
