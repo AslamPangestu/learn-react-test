@@ -16,16 +16,24 @@ describe('Button Component', () => {
   })
   describe('Renders', () => {
     let container
+    let mockFunc
     beforeEach(() => {
+      mockFunc = jest.fn()
       const props = {
         buttonText: 'Title Button',
-        emitEvent: () => {}
+        emitEvent: mockFunc
       }
       container = shallow(<Button {...props} />)
     })
     it('Should render button', () => {
       const button = findByIdTest(container, 'buttonComponent')
       expect(button.length).toBe(1)
+    })
+    it('Should emit callback on click event', () => {
+      const button = findByIdTest(container, 'buttonComponent')
+      button.simulate('click')
+      const callback = mockFunc.mock.calls
+      expect(callback.length).toBe(1)
     })
   })
 })
